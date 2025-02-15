@@ -24,7 +24,7 @@
 ## 🔧 Installation
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/clubfy.git
+git clone https://github.com/oliveiravz/clubfy.git
 
 # Navigate to the project folder
 cd clubfy
