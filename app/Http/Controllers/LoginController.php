@@ -6,6 +6,10 @@ use App\Http\Requests;
 
 class LoginController extends Controller
 {
+    public function index()
+    {
+        return view('login');
+    }
 
     public function login(Request $request)
     {

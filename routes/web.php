@@ -2,10 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::controller(LoginController::class)->group(function() {
-    Route::post('login','login');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/', 'App\Http\Controllers\LoginController@index');
+    Route::post('/login', 'App\Http\Controllers\LoginController@login');
 });
