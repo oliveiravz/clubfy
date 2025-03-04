@@ -7,7 +7,8 @@ $(document).ready(function () {
     });
 
     $("#login-form").ajaxForm({
-
+        type: "POST",
+        dataType: "JSON",
         beforeSubmit: function () {
             
             Swal.fire({
@@ -21,10 +22,15 @@ $(document).ready(function () {
             });
         },
         success: function (response) {
-            console.log("Login realizado com sucesso!", response);
+
+            if(response.status_code == 200) {
+                
+                window.location.href = '/home';
+            }
+
+            
         },
         error: function (xhr) {
-            console.error("Erro ao realizar login:", xhr.responseText);
 
             let errorMessage = "Erro ao realizar login!";
 

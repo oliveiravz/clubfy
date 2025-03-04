@@ -32,19 +32,19 @@
                         <p class="text-center fw-bold mx-3 mb-0">Ou</p>
                     </div>
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="form3Example3" class="form-control form-control-lg"
-                            placeholder="Digite seu e-mail" />
+                        <input type="email" id="email" name="email" class="form-control form-control-lg"
+                            placeholder="Digite seu e-mail" value="joaovictor.mota@gmail.com"/>
                         <label class="form-label" for="form3Example3">E-mail</label>
                     </div>
                     <div data-mdb-input-init class="form-outline mb-3">
-                        <input type="password" id="form3Example4" class="form-control form-control-lg"
-                            placeholder="Digite se senha" />
+                        <input type="password" id="password" name="password" class="form-control form-control-lg"
+                            placeholder="Digite se senha" value="12345" />
                         <label class="form-label" for="form3Example4">Senha</label>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="form-check mb-0">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                            <input class="form-check-input me-2" type="checkbox" value="" id="rememberme" name="rememberme" />
                             <label class="form-check-label" for="form2Example3">
                                 Lembrar minha senha
                             </label>
