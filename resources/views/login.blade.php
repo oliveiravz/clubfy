@@ -33,12 +33,12 @@
                     </div>
                     <div data-mdb-input-init class="form-outline mb-4">
                         <input type="email" id="email" name="email" class="form-control form-control-lg"
-                            placeholder="Digite seu e-mail" value="joaovictor.mota@gmail.com"/>
+                            placeholder="Digite seu e-mail" value="joao.silva@email.com"/>
                         <label class="form-label" for="form3Example3">E-mail</label>
                     </div>
                     <div data-mdb-input-init class="form-outline mb-3">
                         <input type="password" id="password" name="password" class="form-control form-control-lg"
-                            placeholder="Digite se senha" value="12345" />
+                            placeholder="Digite se senha" value="senha123" />
                         <label class="form-label" for="form3Example4">Senha</label>
                     </div>
 

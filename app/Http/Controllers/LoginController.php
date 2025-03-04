@@ -31,7 +31,7 @@ class LoginController extends Controller
             $data = $request->all();
             
             $responseApi = $this->client->request('POST', '/api-clubfy/login', [
-                'data' => $data
+                'body' => $data
             ]);
             
             $response = json_decode($responseApi->getBody(), true);

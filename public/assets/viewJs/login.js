@@ -10,7 +10,6 @@ $(document).ready(function () {
         type: "POST",
         dataType: "JSON",
         beforeSubmit: function () {
-            
             Swal.fire({
                 title: "Seja Bem-Vindo!",
                 html: "Estamos validando suas informações, aguarde...",
@@ -22,27 +21,24 @@ $(document).ready(function () {
             });
         },
         success: function (response) {
-
-            if(response.status_code == 200) {
-                
+            if(response.status_code == 200) {   
                 window.location.href = '/home';
             }
-
-            
         },
         error: function (xhr) {
 
+            console.log(xhr.responseJSON.error);
             let errorMessage = "Erro ao realizar login!";
 
             if (xhr.responseJSON && xhr.responseJSON.message) {
                 errorMessage = xhr.responseJSON.message;
             }
 
-            Swal.fire({
-                title: "Oops!",
-                text: errorMessage,
-                icon: "error"
-            });
+            // Swal.fire({
+            //     title: "Oops!",
+            //     text: xhr.responseJSON.error,
+            //     icon: "error"
+            // });
         }
     });
 });
