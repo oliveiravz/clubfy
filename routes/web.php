@@ -8,5 +8,9 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/home','App\Http\Controllers\HomeController@index');
+    Route::get('/home','App\Http\Controllers\HomeController@index')->name('home');
+});
+
+Route::controller(LogoutController::class)->group(function () {
+    Route::post('/logout','App\Http\Controllers\LogoutController@logout')->name('logout');
 });
