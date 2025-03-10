@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -31,18 +31,29 @@ class LoginController extends Controller
             $data = $request->all();
             
             $responseApi = $this->client->request('POST', '/api-clubfy/login', [
-                'body' => $data
+                'json' => $data,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'
+                ]
             ]);
             
             $response = json_decode($responseApi->getBody(), true);
 
-            return response()->json([
-                'data' => $response,
-                'status_code' => $responseApi->getStatusCode()
-            ]);
+            if (isset($response['status_code']) && $response['status_code'] == 200) {
+                
+                Session::put('user', $response['user']);
+
+                return response()->json($response);
+
+            } else {
+                
+                return redirect()->back()->withErrors(['error' => 'Credenciais inválidas']);
+            }
 
         } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+
+            return response()->json($e->getMessage());
         }
     }
 }

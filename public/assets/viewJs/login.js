@@ -11,9 +11,9 @@ $(document).ready(function () {
         dataType: "JSON",
         beforeSubmit: function () {
             Swal.fire({
-                title: "Seja Bem-Vindo!",
+                title: "Aguarde!",
                 html: "Estamos validando suas informações, aguarde...",
-                timer: 2000,
+                timer: 1000,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading();
@@ -21,24 +21,35 @@ $(document).ready(function () {
             });
         },
         success: function (response) {
-            if(response.status_code == 200) {   
-                window.location.href = '/home';
+
+            if (response.status_code === 200) {
+
+                Swal.fire({
+                    title: "Bem-vindo!",
+                    text: "Redirecionando...",
+                    icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                }).then(() => {
+                    window.location.href = "/home";
+                });
+    
+            } else {
+                Swal.fire({
+                    title: "Erro ao realizar login!",
+                    text: response.error,
+                    icon: "error"
+                });
             }
         },
         error: function (xhr) {
-
-            console.log(xhr.responseJSON.error);
-            let errorMessage = "Erro ao realizar login!";
-
-            if (xhr.responseJSON && xhr.responseJSON.message) {
-                errorMessage = xhr.responseJSON.message;
-            }
-
-            // Swal.fire({
-            //     title: "Oops!",
-            //     text: xhr.responseJSON.error,
-            //     icon: "error"
-            // });
+            console.error(xhr.responseText);
+            Swal.fire({
+                title: "Erro inesperado!",
+                text: "Não foi possível processar a requisição.",
+                icon: "error"
+            });
         }
     });
 });
